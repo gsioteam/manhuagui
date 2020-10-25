@@ -23,7 +23,8 @@ class HomeCollection extends Collection {
             item.type = glib.DataItem.Type.Book;
             item.title = elem.attr('title');
             item.link = pageUrl.href(elem.attr('href'));
-            item.picture = elem.querySelector('img').attr('src');
+            let img = elem.querySelector('img');
+            item.picture = img.attr('src') || img.attr('data-src');
             item.subtitle = elem.querySelector('.tt').text;
             results.push(item);
         }
