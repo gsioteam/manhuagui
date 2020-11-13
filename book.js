@@ -10,11 +10,13 @@ class BookCollection extends Collection {
         let lists = doc.querySelectorAll('.chapter-list'), results = [];
         if (lists.length === 0) {
             let stateNode = doc.querySelector('#__VIEWSTATE');
-            let ctx = glib.ScriptContext.new('v8');
-            ctx.eval(LZString);
-            let html = ctx.eval('LZString.decompressFromBase64("' + stateNode.attr('value') + '")');
-            doc = glib.GumboNode.parse2(html);
-            lists = doc.querySelectorAll('.chapter-list');
+            if (stateNode) {
+                let ctx = glib.ScriptContext.new('v8');
+                ctx.eval(LZString);
+                let html = ctx.eval('LZString.decompressFromBase64("' + stateNode.attr('value') + '")');
+                doc = glib.GumboNode.parse2(html);
+                lists = doc.querySelectorAll('.chapter-list');
+            }
         }
         for (let list of lists) {
             let ul_arr = list.querySelectorAll('ul').reverse();
