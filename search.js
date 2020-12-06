@@ -50,7 +50,7 @@ class SearchCollection extends Collection {
         let page = this.page + 1;
         this.fetch(this.makeURL(page)).then((results)=>{
             this.page = page;
-            this.setData(results);
+            this.appendData(results);
             cb.apply(null);
         }).catch(function(err) {
             if (err instanceof Error) 
