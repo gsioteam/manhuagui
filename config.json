@@ -1,5 +1,6 @@
 {
     "name": "manhuagui",
+    "target": "v2",
     "icon": "https://cf.hamreus.com/images/mhg.png",
     "url": "https://www.manhuagui.com/",
     "index": "index.js",
