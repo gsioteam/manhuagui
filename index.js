@@ -20,7 +20,6 @@ class HomeCollection extends Collection {
             let elem = elems[i];
 
             let item = glib.DataItem.new();
-            item.type = glib.DataItem.Type.Book;
             item.title = elem.attr('title');
             item.link = pageUrl.href(elem.attr('href'));
             let img = elem.querySelector('img');

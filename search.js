@@ -16,7 +16,6 @@ class SearchCollection extends Collection {
         let results = [];
         for (let node of nodes) {
             let item = glib.DataItem.new();
-            item.type = glib.DataItem.Type.Book;
             item.link = pageUrl.href(node.attr('href'));
             item.title = node.attr('title');
             item.picture = node.querySelector('img').attr('src');

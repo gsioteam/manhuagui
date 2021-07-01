@@ -24,7 +24,6 @@ class BookCollection extends Collection {
                 let li_arr = ul.querySelectorAll('li > a');
                 for (let li of li_arr) {
                     let item = glib.DataItem.new();
-                    item.type = glib.DataItem.Type.Chapter;
                     item.title = li.attr('title');
                     console.log(`title ${item.title}`);
                     item.link = pageUrl.href(li.attr('href'));
