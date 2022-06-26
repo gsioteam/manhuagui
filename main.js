@@ -18,7 +18,7 @@ class MainController extends Controller {
         this.data = {
             list: list,
             loading: false,
-            hasMore: this.id !== 'update'
+            hasMore: true
         };
 
         this.userAgent = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36';
@@ -103,7 +103,7 @@ class MainController extends Controller {
             this.setState(()=>{
                 this.data.list = items;
                 this.data.loading = false;
-                this.data.hasMore = this.id !== 'update' && items.length >= PER_PAGE;
+                this.data.hasMore = items.length >= PER_PAGE;
             });
         } catch (e) {
             showToast(`${e}\n${e.stack}`);
