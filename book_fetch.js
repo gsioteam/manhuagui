@@ -1,7 +1,8 @@
 
+const {LZString} = require('./lzstring');
+
 function parseData(text, url) {
-    console.log(text);
-    const doc = HTMLParser.parse(text);
+    let doc = HTMLParser.parse(text);
 
     let summary = doc.querySelector('#intro-all').text.trim();
     let subtitle = doc.querySelector('.book-title h2').text.trim();
@@ -10,10 +11,10 @@ function parseData(text, url) {
     if (lists.length === 0) {
         let stateNode = doc.querySelector('#__VIEWSTATE');
         if (stateNode) {
-            let ctx = glib.ScriptContext.new('v8');
+            let ctx = new ScriptContext();
             ctx.eval(LZString);
-            let html = ctx.eval('LZString.decompressFromBase64("' + stateNode.attr('value') + '")');
-            doc = glib.GumboNode.parse2(html);
+            let html = ctx.eval('LZString.decompressFromBase64("' + stateNode.getAttribute('value') + '")');
+            doc = HTMLParser.parse(html);
             lists = doc.querySelectorAll('.chapter-list');
         }
     }
